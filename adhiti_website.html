@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADHITI ONLINE SERVICES - Your Trusted Partner</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2563eb;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            background: linear-gradient(45deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #2563eb;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(124, 58, 237, 0.9));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #2563eb;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: #f8fafc;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #2563eb;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 3rem 0;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #2563eb, #7c3aed);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        /* Features Section */
+        .features {
+            background: white;
+            padding: 4rem 0;
+            margin: 3rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: #f8fafc;
+            transform: translateY(-5px);
+        }
+
+        .feature-item i {
+            font-size: 2.5rem;
+            color: #10b981;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .quick-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .whatsapp { background: #25d366; }
+        .call { background: #2563eb; }
+        .scroll-top { background: #6b7280; }
+
+        .quick-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Status Tracker */
+        .status-tracker {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .status-input {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .status-input input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+        }
+
+        .status-result {
+            padding: 1rem;
+            background: #f0f9ff;
+            border-radius: 8px;
+            border-left: 4px solid #2563eb;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        /* Animations */
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .status-input {
+                flex-direction: column;
+            }
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .section p {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #2563eb;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #2563eb;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transform: translateX(400px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-globe"></i>
+                ADHITI ONLINE SERVICES
+            </a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')" class="active">Home</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('services')">Services</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                <li><a href="#" onclick="showPage('tracker')">Track Status</a></li>
+            </ul>
+            <div class="mobile-menu" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HOME PAGE -->
+        <div id="home" class="page active">
+            <section class="hero">
+                <div class="container hero-content">
+                    <h1>Welcome to ADHITI ONLINE SERVICES</h1>
+                    <p>Your Trusted Partner for All Online Services</p>
+                    <p>We provide fast, secure, and affordable online services for Aadhaar Card, PAN Card, Passport, Ration Card, Voter ID, Government Schemes, Utility Bill Payments, and much more.</p>
+                    <div class="cta-buttons">
+                        <a href="https://wa.me/918179802943" class="btn btn-secondary" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Now
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <h2>Services at Your Fingertips</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <i class="fas fa-id-card"></i>
+                            <h3>Aadhaar Card Services</h3>
+                            <p>Apply for new Aadhaar card or update existing information quickly and securely.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-credit-card"></i>
+                            <h3>PAN Card Application</h3>
+                            <p>Get your PAN card processed with minimal documentation and fast delivery.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-passport"></i>
+                            <h3>Passport Registration</h3>
+                            <p>Complete passport application assistance with document verification support.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-utensils"></i>
+                            <h3>Ration Card Services</h3>
+                            <p>Apply for new ration card or make updates to existing card details.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-vote-yea"></i>
+                            <h3>Voter ID Services</h3>
+                            <p>Register as a voter or update your voter ID information easily.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Bill Payments & Recharges</h3>
+                            <p>Pay utility bills and mobile recharges with secure payment options.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="container">
+                    <h2 style="color: #333;">Why Choose Us?</h2>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-clock"></i>
+                            <h3>Fast & Hassle-Free</h3>
+                            <p>Quick processing with minimal paperwork</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-rupee-sign"></i>
+                            <h3>Affordable Charges</h3>
+                            <p>Transparent pricing with no hidden costs</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>100% Secure</h3>
+                            <p>Your data is completely safe and secure</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-headset"></i>
+                            <h3>24/7 Support</h3>
+                            <p>Customer support for every step</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ABOUT PAGE -->
+        <div id="about" class="page">
+            <section class="hero">
+                <div class="container hero-content">
+                    <h1>About ADHITI ONLINE SERVICES</h1>
+                    <p>Your One-Stop Solution for All Online Application Services</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                        <h2 style="color: #333; margin-bottom: 2rem;">Who We Are?</h2>
+                        <p style="color: #666; font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                            ADHITI ONLINE SERVICES is a one-stop solution for all online application services. We help people apply for essential documents and services easily, quickly, and securely. Our experienced team understands the complexities of government processes and works tirelessly to simplify them for our customers.
+                        </p>
+                        
+                        <h3 style="color: #2563eb; margin-bottom: 1rem;">Our Mission</h3>
+                        <p style="color: #666; margin-bottom: 2rem;">
+                            To provide affordable, reliable, and trusted online services for everyone. We believe that accessing government services shouldn't be complicated or time-consuming.
+                        </p>
+
+                        <h3 style="color: #2563eb; margin-bottom: 1rem;">Our Vision</h3>
+                        <p style="color: #666; margin-bottom: 2rem;">
+                            To become the most trusted digital service provider in India, making government services accessible to every citizen through technology and dedicated customer service.
+                        </p>
+
+                        <h3 style="color: #2563eb; margin-bottom: 1rem;">Our Values</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+                            <div style="padding: 1rem; border-left: 4px solid #2563eb; background: #f8fafc;">
+                                <h4 style="color: #333; margin-bottom: 0.5rem;">Transparency</h4>
+                                <p style="color: #666;">Clear pricing and honest communication at every step.</p>
+                            </div>
+                            <div style="padding: 1rem; border-left: 4px solid #10b981; background: #f0fdf4;">
+                                <h4 style="color: #333; margin-bottom: 0.5rem;">Reliability</h4>
+                                <p style="color: #666;">Consistent service delivery you can count on.</p>
+                            </div>
+                            <div style="padding: 1rem; border-left: 4px solid #f59e0b; background: #fffbeb;">
+                                <h4 style="color: #333; margin-bottom: 0.5rem;">Innovation</h4>
+                                <p style="color: #666;">Using technology to make services more accessible.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- SERVICES PAGE -->
+        <div id="services" class="page">
+            <section class="hero">
+                <div class="container hero-content">
+                    <h1>Our Services</h1>
+                    <p>Complete Range of Online Government Services</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <i class="fas fa-id-card"></i>
+                            <h3>Aadhaar Card Application & Updates</h3>
+                            <p>New Aadhaar registration, demographic updates, mobile number updates, and address changes.</p>
+                            <ul style="margin-top: 1rem; color: #666;">
+                                <li>✓ New Aadhaar Enrollment</li>
+                                <li>✓ Address Update</li>
+                                <li>✓ Mobile Number Update</li>
+                                <li>✓ Name Correction</li>
+                            </ul>
+                        </div>
+
+                        <div class="service-card">
+                            <i class="fas fa-credit-card"></i>
+                            <h3>PAN Card Application</h3>
+                            <p>Apply for new PAN card, reprint lost PAN card, and PAN card corrections.</p>
+                            <ul style="margin-top: 1rem; color: #666;">
+                                <li>✓ New PAN Application</li>
+                                <li>✓ Duplicate PAN Card</li>
+                                <li>✓ PAN Card Corrections</li>
+                                <li>✓ PAN Card Status Check</li>
+                            </ul>
+                        </div>
+
+                        <div class="service-card">
+                            <i class="fas fa-passport"></i>
+                            <h3>Passport Registration</h3>
+                            <p>Complete passport application assistance including document verification and appointment booking.</p>
+                            <ul style="margin-top: 1rem; color: #666;">
+                                <li>✓ Fresh Passport</li>
+                                <li>✓ Passport Renewal</li>
+                                <li>✓ Tatkal Services</li>
+                                <li>✓ Document Verification</li>
+                            </ul>
+                        </div>
+
+                        <div class="service-card">
+                            <i class="fas fa-utensils"></i>
+                            <h3>Ration Card Services</h3>
+                            <p>Apply for new ration card, add family members, and update ration card details.</p>
+                            <ul style="margin-top: 1rem; color: #666;">
+                                <li>✓ New Ration Card</li>
+                                <li>✓ Add Family Members</li>
+                                <li>✓ Address Change</li>
+                                <li>✓ Income Certificate</li>
+                            </ul>
+                        </div>
+
+                        <div class="service-card">
+                            <i class="fas fa-vote-yea"></i>
+                            <h3>Voter ID Services</h3>
+                            <p>Voter registration, voter ID card corrections, and polling booth information.</p>
+                            <ul style="margin-top: 1rem; color: #666;">
+                                <li>✓ New Voter Registration</li>
+                                <li>✓ Voter ID Corrections</li>
+                                <li>✓ Polling Booth Info</li>
+                                <li>✓ Voter Slip Download</li>
+                            </ul>
+                        </div>
+
+                        <div class="service-card">
+                            <i class="fas fa-hands-helping"></i>
+                            <h3>Government Scheme Applications</h3>
+                            <p>Apply for various government schemes and benefit programs.</p>
+                            <ul style="margin-top: 1rem; color: #666;">
+                                <li>✓ PM-Kisan Registration</li>
+                                <li>✓ Ayushman Bharat Card</li>
+                                <li>✓ Jan Aushadhi Services</li>
+                                <li>✓ Scholarship Applications</li>
+                            </ul>
+                        </div>
+
+                        <div class="service-card">
+                            <i class="fas fa-file-alt"></i>
+                            <h3>Online Form Submissions</h3>
+                            <p>Assistance with various government form submissions and applications.</p>
+                            <ul style="margin-top: 1rem; color: #666;">
+                                <li>✓ Income Certificate</li>
+                                <li>✓ Caste Certificate</li>
+                                <li>✓ Domicile Certificate</li>
+                                <li>✓ Birth/Death Certificate</li>
+                            </ul>
+                        </div>
+
+                        <div class="service-card">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Utility Bill Payments</h3>
+                            <p>Pay your electricity, water, gas bills, and mobile recharges securely.</p>
+                            <ul style="margin-top: 1rem; color: #666;">
+                                <li>✓ Electricity Bills</li>
+                                <li>✓ Water Bills</li>
+                                <li>✓ Gas Bills</li>
+                                <li>✓ Mobile/DTH Recharge</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CONTACT PAGE -->
+        <div id="contact" class="page">
+            <section class="hero">
+                <div class="container hero-content">
+                    <h1>Contact Us</h1>
+                    <p>Get in Touch for Any Service Requirements</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                        <div class="contact-form">
+                            <h3 style="margin-bottom: 1.5rem; color: #333;">Send us a Message</h3>
+                            <form id="contactForm">
+                                <div class="form-group">
+                                    <label for="name">Full Name *</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number *</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="service">Service Required</label>
+                                    <select id="service" name="service">
+                                        <option value="">Select Service</option>
+                                        <option value="aadhaar">Aadhaar Card Services</option>
+                                        <option value="pan">PAN Card Application</option>
+                                        <option value="passport">Passport Registration</option>
+                                        <option value="ration">Ration Card Services</option>
+                                        <option value="voter">Voter ID Services</option>
+                                        <option value="government">Government Schemes</option>
+                                        <option value="bills">Bill Payments</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" rows="4" placeholder="Describe your requirements..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                    <i class="fas fa-paper-plane"></i> Send Message
+                                </button>
+                            </form>
+                        </div>
+
+                        <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                            <h3 style="margin-bottom: 1.5rem; color: #333;">Contact Information</h3>
+                            
+                            <div style="margin-bottom: 1.5rem;">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                    <i class="fas fa-map-marker-alt" style="color: #ef4444; width: 20px;"></i>
+                                    <div>
+                                        <strong>Address:</strong><br>
+                                        Bheemgal, Boigally, 5-58/2
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                    <i class="fas fa-phone" style="color: #2563eb; width: 20px;"></i>
+                                    <div>
+                                        <strong>Phone:</strong><br>
+                                        <a href="tel:8179802943" style="color: #2563eb; text-decoration: none;">8179802943</a>
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                    <i class="fas fa-envelope" style="color: #10b981; width: 20px;"></i>
+                                    <div>
+                                        <strong>Email:</strong><br>
+                                        <a href="mailto:vinaymende007@gmail.com" style="color: #10b981; text-decoration: none;">vinaymende007@gmail.com</a>
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                    <i class="fab fa-whatsapp" style="color: #25d366; width: 20px;"></i>
+                                    <div>
+                                        <strong>WhatsApp:</strong><br>
+                                        <a href="https://wa.me/918179802943" target="_blank" style="color: #25d366; text-decoration: none;">Click to Chat</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 2rem;">
+                                <h4 style="margin-bottom: 1rem; color: #333;">Business Hours</h4>
+                                <p style="color: #666; margin-bottom: 0.5rem;"><strong>Monday - Saturday:</strong> 9:00 AM - 7:00 PM</p>
+                                <p style="color: #666;"><strong>Sunday:</strong> 10:00 AM - 5:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Google Map -->
+                    <div style="margin-top: 3rem; background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                        <h3 style="margin-bottom: 1.5rem; color: #333; text-align: center;">Find Us on Map</h3>
+                        <div style="width: 100%; height: 300px; background: #f3f4f6; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #666;">
+                            <div style="text-align: center;">
+                                <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 1rem; color: #2563eb;"></i>
+                                <p><strong>Location: Bheemgal, Boigally, 5-58/2</strong></p>
+                                <p style="margin-top: 1rem;">
+                                    <a href="https://maps.google.com/?q=Bheemgal,Boigally" target="_blank" 
+                                       style="color: #2563eb; text-decoration: none; font-weight: bold;">
+                                        <i class="fas fa-external-link-alt"></i> Open in Google Maps
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- STATUS TRACKER PAGE -->
+        <div id="tracker" class="page">
+            <section class="hero">
+                <div class="container hero-content">
+                    <h1>Track Your Application</h1>
+                    <p>Check the Status of Your Service Requests</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="status-tracker">
+                        <h3 style="margin-bottom: 1.5rem; color: #333; text-align: center;">Application Status Tracker</h3>
+                        <div class="status-input">
+                            <input type="text" id="applicationId" placeholder="Enter your Application ID" style="flex: 2;">
+                            <input type="tel" id="mobileNumber" placeholder="Mobile Number" style="flex: 1;">
+                            <button class="btn btn-primary" onclick="trackStatus()" style="flex: 0 0 auto;">
+                                <i class="fas fa-search"></i> Track Status
+                            </button>
+                        </div>
+                        
+                        <div id="statusResult" class="status-result">
+                            <h4 style="color: #2563eb; margin-bottom: 1rem;">Application Status</h4>
+                            <div id="statusContent"></div>
+                        </div>
+
+                        <div style="margin-top: 2rem; padding: 1.5rem; background: #fef3c7; border-radius: 10px; border-left: 4px solid #f59e0b;">
+                            <h4 style="color: #92400e; margin-bottom: 1rem;"><i class="fas fa-info-circle"></i> How to Find Your Application ID?</h4>
+                            <ul style="color: #92400e; margin-left: 1rem;">
+                                <li>Check the SMS sent to your registered mobile number</li>
+                                <li>Look for the confirmation email in your inbox</li>
+                                <li>Check the receipt/acknowledgment slip</li>
+                                <li>Contact our support team for assistance</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Service Status Examples -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                        <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                            <h4 style="color: #2563eb; margin-bottom: 1rem;"><i class="fas fa-clock"></i> Processing Times</h4>
+                            <ul style="color: #666; line-height: 1.8;">
+                                <li><strong>Aadhaar Card:</strong> 15-30 days</li>
+                                <li><strong>PAN Card:</strong> 7-15 days</li>
+                                <li><strong>Passport:</strong> 30-45 days</li>
+                                <li><strong>Voter ID:</strong> 20-30 days</li>
+                                <li><strong>Ration Card:</strong> 15-30 days</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                            <h4 style="color: #10b981; margin-bottom: 1rem;"><i class="fas fa-headset"></i> Need Help?</h4>
+                            <p style="color: #666; margin-bottom: 1rem;">Can't track your application or need assistance?</p>
+                            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <a href="https://wa.me/918179802943" class="btn btn-secondary" target="_blank" style="font-size: 0.9rem;">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp
+                                </a>
+                                <a href="tel:8179802943" class="btn btn-primary" style="font-size: 0.9rem;">
+                                    <i class="fas fa-phone"></i> Call Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Quick Action Buttons -->
+    <div class="quick-actions">
+        <a href="https://wa.me/918179802943" class="quick-btn whatsapp" target="_blank" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:8179802943" class="quick-btn call" title="Call Now">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="#" class="quick-btn scroll-top" onclick="scrollToTop()" title="Back to Top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <i class="fas fa-check-circle"></i> <span id="notificationText">Message sent successfully!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ADHITI ONLINE SERVICES</h3>
+                    <p>Your trusted partner for all online government services. We make complex processes simple and accessible.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="https://wa.me/918179802943" target="_blank" style="margin-right: 1rem; font-size: 1.5rem; color: #25d366;">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="tel:8179802943" style="margin-right: 1rem; font-size: 1.5rem; color: #2563eb;">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="mailto:vinaymende007@gmail.com" style="font-size: 1.5rem; color: #10b981;">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#" onclick="showPage('home')">Home</a></p>
+                    <p><a href="#" onclick="showPage('about')">About Us</a></p>
+                    <p><a href="#" onclick="showPage('services')">Our Services</a></p>
+                    <p><a href="#" onclick="showPage('contact')">Contact Us</a></p>
+                    <p><a href="#" onclick="showPage('tracker')">Track Status</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Popular Services</h3>
+                    <p>Aadhaar Card Services</p>
+                    <p>PAN Card Application</p>
+                    <p>Passport Registration</p>
+                    <p>Voter ID Services</p>
+                    <p>Government Schemes</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Bheemgal, Boigally, 5-58/2</p>
+                    <p><i class="fas fa-phone"></i> 8179802943</p>
+                    <p><i class="fas fa-envelope"></i> vinaymende007@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 9AM-7PM</p>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid #374151; padding-top: 2rem; margin-top: 2rem;">
+                <p>&copy; 2025 ADHITI ONLINE SERVICES. All rights reserved. | Designed with ❤️ for better service delivery</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation and Page Management
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update active navigation link
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Close mobile menu if open
+            document.querySelector('.nav-links').classList.remove('active');
+            
+            // Scroll to top
+            scrollToTop();
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Scroll to Top Function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Create WhatsApp message
+            const whatsappMessage = `Hello! I'm interested in your services.
+            
+Name: ${name}
+Phone: ${phone}
+Service: ${service || 'General Inquiry'}
+Message: ${message || 'Please contact me for more information.'}`;
+            
+            const whatsappUrl = `https://wa.me/918179802943?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            // Show notification
+            showNotification('Redirecting to WhatsApp...');
+            
+            // Open WhatsApp
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 1000);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Status Tracking Function
+        function trackStatus() {
+            const applicationId = document.getElementById('applicationId').value;
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            
+            if (!applicationId || !mobileNumber) {
+                showNotification('Please enter both Application ID and Mobile Number', 'error');
+                return;
+            }
+            
+            // Simulate status checking
+            const statusResult = document.getElementById('statusResult');
+            const statusContent = document.getElementById('statusContent');
+            
+            statusContent.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <i class="fas fa-spinner fa-spin" style="color: #2563eb;"></i>
+                    <span>Checking application status...</span>
+                </div>
+            `;
+            statusResult.style.display = 'block';
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                const statuses = [
+                    {
+                        status: 'Under Review',
+                        description: 'Your application is currently being reviewed by our team.',
+                        color: '#f59e0b',
+                        icon: 'fas fa-eye'
+                    },
+                    {
+                        status: 'Documents Submitted',
+                        description: 'Documents have been submitted to the concerned authority.',
+                        color: '#2563eb',
+                        icon: 'fas fa-file-upload'
+                    },
+                    {
+                        status: 'In Progress',
+                        description: 'Your application is being processed by the government authority.',
+                        color: '#8b5cf6',
+                        icon: 'fas fa-cogs'
+                    },
+                    {
+                        status: 'Ready for Collection',
+                        description: 'Your document is ready! Please contact us for collection details.',
+                        color: '#10b981',
+                        icon: 'fas fa-check-circle'
+                    }
+                ];
+                
+                const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+                
+                statusContent.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <i class="${randomStatus.icon}" style="color: ${randomStatus.color}; font-size: 1.5rem;"></i>
+                        <div>
+                            <h5 style="color: ${randomStatus.color}; margin: 0;">${randomStatus.status}</h5>
+                            <p style="margin: 0.5rem 0 0 0; color: #666;">${randomStatus.description}</p>
+                        </div>
+                    </div>
+                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <p style="margin: 0; color: #666;"><strong>Application ID:</strong> ${applicationId}</p>
+                        <p style="margin: 0.5rem 0 0 0; color: #666;"><strong>Last Updated:</strong> ${new Date().toLocaleDateString('en-IN')}</p>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <a href="https://wa.me/918179802943?text=Hi, I need help with my application ID: ${applicationId}" 
+                           class="btn btn-primary" target="_blank" style="font-size: 0.9rem;">
+                            <i class="fab fa-whatsapp"></i> Contact Support
+                        </a>
+                    </div>
+                `;
+            }, 2000);
+        }
+
+        // Notification Function
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            
+            if (type === 'error') {
+                notification.style.background = '#ef4444';
+            } else {
+                notification.style.background = '#10b981';
+            }
+            
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Header scroll effect
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Service cards hover effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(-10px) scale(1)';
+                });
+            });
+        });
+
+        // Auto-show quick actions on scroll
+        window.addEventListener('scroll', function() {
+            const quickActions = document.querySelector('.quick-actions');
+            if (window.scrollY > 200) {
+                quickActions.style.opacity = '1';
+                quickActions.style.visibility = 'visible';
+            } else {
+                quickActions.style.opacity = '0.7';
+            }
+        });
+
+        // Add smooth scrolling for all internal links
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Welcome message for first-time visitors
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                showNotification('Welcome to ADHITI ONLINE SERVICES! 🎉');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
